@@ -19,3 +19,9 @@ jobs:
 
             - name: Eslint
               run: npm run lint
+
+            - name: Build
+              run: npm run build
+
+            - name: Test
+              run: npm run test
