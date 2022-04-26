@@ -8,7 +8,7 @@ on:
         branches: ['main']
         types: [opened, synchronize]
 jobs:
-    deploy:
+    avoid_redundancy:
         runs-on: ubuntu-20.04
         steps:
             - name: Cancel Previous Redundant Builds
@@ -16,6 +16,9 @@ jobs:
               with:
                   access_token: ${{ github.token }}
 
+    deploy:
+        runs-on: ubuntu-20.04
+        steps:
             - uses: actions/checkout@v3
               with:
                   fetch-depth: 0
