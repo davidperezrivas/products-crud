@@ -51,6 +51,7 @@ jobs:
                   path: dist
 
     test:
+        needs: [lint, build]
         runs-on: ubuntu-20.04
         steps:
             - uses: actions/checkout@v3
@@ -70,19 +71,12 @@ jobs:
               run: npm run test
 
     deploy:
+        needs: [test]
         runs-on: ubuntu-20.04
         steps:
             - uses: actions/checkout@v3
               with:
                   fetch-depth: 0
-            - uses: actions/setup-node@v3
-              with:
-                  node-version: 16
-            - name: Install dependencies
-              run: npm ci
-
-            - name: Test
-              run: npm run test
 
             - name: Deploy to heroku
               if: ${{github.event_name == 'push'}}
