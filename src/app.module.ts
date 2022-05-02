@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
 import { DepartmentsModule } from './departments/departments.module';
 import { ProductsModule } from './products/products.module';
 //import { MongooseModule } from '@nestjs/mongoose';
@@ -7,7 +8,7 @@ import { ProductsModule } from './products/products.module';
 
 @Module({
     imports: [DepartmentsModule, ProductsModule],
-    controllers: [],
+    controllers: [AppController],
     providers: [],
 })
 export class AppModule {}
