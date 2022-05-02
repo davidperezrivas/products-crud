@@ -12,13 +12,14 @@ const app_controller_1 = require("./app.controller");
 const departments_module_1 = require("./departments/departments.module");
 const products_module_1 = require("./products/products.module");
 const mongoose_1 = require("@nestjs/mongoose");
-const URL_DB = process.env.NODE_ENV == 'test' ? process.env.DATABASE_URL_TEST : process.env.DATABASE_URL;
-console.log(URL_DB);
+const config_1 = require("@nestjs/config");
+const config_2 = require("./config");
+console.log(config_2.default.DATABASE_URL);
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [mongoose_1.MongooseModule.forRoot(URL_DB), departments_module_1.DepartmentsModule, products_module_1.ProductsModule],
+        imports: [config_1.ConfigModule.forRoot(), mongoose_1.MongooseModule.forRoot(config_2.default.DATABASE_URL), departments_module_1.DepartmentsModule, products_module_1.ProductsModule],
         controllers: [app_controller_1.AppController],
         providers: [],
     })

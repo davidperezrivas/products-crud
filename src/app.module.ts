@@ -3,11 +3,12 @@ import { AppController } from './app.controller';
 import { DepartmentsModule } from './departments/departments.module';
 import { ProductsModule } from './products/products.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule } from '@nestjs/config';
 
-const URL_DB = process.env.NODE_ENV == 'test' ? process.env.DATABASE_URL_TEST : process.env.DATABASE_URL;
+import config from './config';
 
 @Module({
-    imports: [MongooseModule.forRoot(URL_DB), DepartmentsModule, ProductsModule],
+    imports: [ConfigModule.forRoot(), MongooseModule.forRoot(config.DATABASE_URL), DepartmentsModule, ProductsModule],
     controllers: [AppController],
     providers: [],
 })
