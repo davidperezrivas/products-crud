@@ -8,14 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
+const app_controller_1 = require("./app.controller");
 const departments_module_1 = require("./departments/departments.module");
 const products_module_1 = require("./products/products.module");
+const mongoose_1 = require("@nestjs/mongoose");
+const URL_DB = process.env.NODE_ENV == 'test' ? process.env.DB_URL_TEST : process.env.DB_URL;
+console.log(URL_DB);
+console.log(process.env.DB_URL_TEST);
+console.log(process.env.DB_URL);
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [departments_module_1.DepartmentsModule, products_module_1.ProductsModule],
-        controllers: [],
+        imports: [mongoose_1.MongooseModule.forRoot(URL_DB), departments_module_1.DepartmentsModule, products_module_1.ProductsModule],
+        controllers: [app_controller_1.AppController],
         providers: [],
     })
 ], AppModule);
