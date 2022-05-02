@@ -10,7 +10,13 @@ console.log(process.env.DB_URL_TEST);
 console.log(process.env.DB_URL);
 
 @Module({
-    imports: [MongooseModule.forRoot(URL_DB), DepartmentsModule, ProductsModule],
+    imports: [
+        MongooseModule.forRoot(
+            'mongodb+srv://david:Pd4ufbIXQrQhPW9E@cluster0.qfdlg.mongodb.net/farmacy_test?retryWrites=true&w=majority',
+        ),
+        DepartmentsModule,
+        ProductsModule,
+    ],
     controllers: [AppController],
     providers: [],
 })
