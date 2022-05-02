@@ -6,7 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 const URL_DB = process.env.NODE_ENV == 'test' ? process.env.DB_URL_TEST : process.env.DB_URL;
 
 @Module({
-    imports: [MongooseModule.forRoot(URL_DB), DepartmentsModule, ProductsModule],
+    imports: [DepartmentsModule, ProductsModule],
     controllers: [],
     providers: [],
 })
