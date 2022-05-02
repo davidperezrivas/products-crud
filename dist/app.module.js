@@ -12,10 +12,8 @@ const app_controller_1 = require("./app.controller");
 const departments_module_1 = require("./departments/departments.module");
 const products_module_1 = require("./products/products.module");
 const mongoose_1 = require("@nestjs/mongoose");
-const URL_DB = process.env.NODE_ENV == 'test' ? process.env.DB_URL_TEST : process.env.DB_URL;
+const URL_DB = process.env.NODE_ENV == 'test' ? process.env.DATABASE_URL_TEST : process.env.DATABASE_URL;
 console.log(URL_DB);
-console.log(process.env.DB_URL_TEST);
-console.log(process.env.DB_URL);
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
