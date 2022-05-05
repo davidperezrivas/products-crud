@@ -5,7 +5,7 @@ export type DepartmentDocument = Department & Document;
 
 @Schema({ timestamps: true })
 export class Department {
-    @Prop()
+    @Prop({ required: true, unique: true })
     // eslint-disable-next-line indent
     name: string;
 }
